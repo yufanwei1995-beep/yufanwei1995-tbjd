@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON 格式化校验 - 免费在线工具</title>
+<meta name="description" content="在线 JSON 格式化、压缩、校验、树形展示">
+<link rel="canonical" href="https://jdtbsaving.shop/tools/json-formatter.html">
+<style>
+:root{--bg:#f8fafc;--surface:#fff;--text:#1a1a2e;--text2:#64748b;--border:#e2e8f0;
+--accent:#6366f1;--accent-hover:#4f46e5;--radius:10px;--shadow:0 1px 3px rgba(0,0,0,.06);
+--font:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.tool-header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 0}
+.tool-header .container{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:12px}
+.tool-header .logo{font-size:18px;font-weight:700;color:var(--accent);text-decoration:none}
+.tool-header .logo:hover{color:var(--accent-hover)}
+.tool-nav{display:flex;gap:16px;margin-left:auto}
+.tool-nav a{color:var(--text2);text-decoration:none;font-size:13px}
+.tool-nav a:hover{color:var(--accent)}
+.tool-main{flex:1;max-width:900px;margin:0 auto;padding:32px 20px;width:100%}
+.tool-main h1{font-size:24px;margin-bottom:6px}
+.tool-main .subtitle{color:var(--text2);font-size:14px;margin-bottom:24px}
+.ad-placeholder{background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);
+text-align:center;padding:20px;margin:20px 0;color:var(--text2);font-size:12px}
+.tool-footer{background:var(--surface);border-top:1px solid var(--border);padding:20px 0;text-align:center;
+font-size:12px;color:var(--text2)}
+.tool-footer a{color:var(--accent);text-decoration:none}
+input,textarea,select,button{font-family:var(--font)}
+textarea{width:100%;min-height:200px;padding:14px;border:2px solid var(--border);border-radius:var(--radius);
+font-size:14px;resize:vertical;background:var(--bg);color:var(--text);outline:none;transition:border .2s}
+textarea:focus,input:focus,select:focus{border-color:var(--accent)}
+button,.btn{padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);
+font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+button:hover,.btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+.btn-outline:hover{background:var(--accent);color:#fff}
+.output-area{margin-top:16px;padding:16px;background:var(--surface);border:1px solid var(--border);
+border-radius:var(--radius);min-height:80px;word-break:break-all;font-size:14px;line-height:1.7}
+.input-group{display:flex;gap:8px;margin:12px 0}
+.input-group input{flex:1;padding:10px 14px;border:2px solid var(--border);border-radius:var(--radius);font-size:14px}
+.result-bar{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.result-bar .label{font-size:13px;color:var(--text2)}
+.copy-btn{padding:6px 16px;font-size:12px}
+@media(max-width:640px){.tool-main{padding:20px 16px}.input-group{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="tool-header"><div class="container">
+<a href="/tools/" class="logo">🛠 在线工具</a>
+<nav class="tool-nav"><a href="/tools/">全部工具</a><a href="/">好物导航</a></nav>
+</div></header>
+<main class="tool-main"><h1>JSON 格式化校验</h1>
+<p class="subtitle">在线 JSON 格式化、压缩、校验，支持语法高亮</p>
+<div class="ad-placeholder">广告位</div>
+<div class="input-group">
+  <textarea id="jsonInput" placeholder='粘贴 JSON 字符串... 例如: {"name":"张三","age":25}' style="min-height:180px;font-family:monospace"></textarea>
+</div>
+<div class="input-group">
+  <button onclick="format()">🔧 格式化</button>
+  <button onclick="compress()" class="btn-outline">📦 压缩</button>
+  <button onclick="validate()" class="btn-outline">✅ 校验</button>
+  <button onclick="clearAll()" class="btn-outline">🗑 清空</button>
+</div>
+<div class="output-area" id="output" style="font-family:monospace;white-space:pre-wrap;padding:16px;min-height:60px"></div>
+<div class="result-bar"><span id="status"></span><button class="copy-btn" onclick="copyResult()">📋 复制</button></div>
+<style>.key{color:#2563eb}.string{color:#059669}.number{color:#d97706}.bool{color:#7c3aed}.null{color:#94a3b8}</style>
+<script>
+var last = "";
+function hl(json) {
+  json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return json.replace(/("(\u[a-fA-F0-9]{4}|\[^u]|[^"\\])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(m) {
+    var cls = "number";
+    if (/^"/.test(m)) cls = /:$/.test(m) ? "key" : "string";
+    else if (/true|false/.test(m)) cls = "bool";
+    else if (/null/.test(m)) cls = "null";
+    return '<span class="' + cls + '">' + m + "</span>";
+  });
+}
+function format() {
+  try {
+    var obj = JSON.parse(document.getElementById("jsonInput").value.trim());
+    last = JSON.stringify(obj, null, 2);
+    document.getElementById("output").innerHTML = hl(last);
+    document.getElementById("status").innerHTML = '<span style="color:#059669">✅ JSON 有效</span>';
+  } catch(e) {
+    document.getElementById("output").innerHTML = '<span style="color:#dc2626">❌ ' + e.message + "</span>";
+  }
+}
+function compress() {
+  try {
+    var obj = JSON.parse(document.getElementById("jsonInput").value.trim());
+    last = JSON.stringify(obj);
+    document.getElementById("output").textContent = last;
+    document.getElementById("status").innerHTML = '<span style="color:#059669">✅ 已压缩 (' + last.length + " 字符)</span>";
+  } catch(e) {
+    document.getElementById("output").innerHTML = '<span style="color:#dc2626">❌ ' + e.message + "</span>";
+  }
+}
+function validate() {
+  try {
+    JSON.parse(document.getElementById("jsonInput").value.trim());
+    document.getElementById("status").innerHTML = '<span style="color:#059669">✅ JSON 有效!</span>';
+  } catch(e) {
+    document.getElementById("status").innerHTML = '<span style="color:#dc2626">❌ ' + e.message + "</span>";
+  }
+}
+function clearAll() {
+  document.getElementById("jsonInput").value = "";
+  document.getElementById("output").innerHTML = "";
+  document.getElementById("status").innerHTML = "";
+}
+function copyResult() {
+  if (!last) { alert("请先格式化或压缩 JSON"); return; }
+  navigator.clipboard.writeText(last).then(function() { alert("已复制!"); });
+}
+</script></main>
+<footer class="tool-footer"><p>AI 工具工厂 · <a href="/tools/">全部工具</a></p></footer>
+</body></html>
