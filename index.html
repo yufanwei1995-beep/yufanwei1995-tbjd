@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好物导航</title>
+<style>
+:root {
+    --bg: #f8fafc; --card: #fff; --text: #1a1a2e; --text2: #64748b;
+    --font: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+.hero { text-align: center; padding: 60px 0 40px; }
+.hero h1 { font-size: 36px; margin-bottom: 12px; }
+.hero p { color: var(--text2); font-size: 18px; }
+.sites { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 20px 0 60px; }
+.site-card {
+    background: var(--card); border-radius: 16px; padding: 32px 24px;
+    text-decoration: none; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s; display: block;
+}
+.site-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.site-card .icon { font-size: 40px; margin-bottom: 16px; display: block; }
+.site-card h2 { font-size: 20px; margin-bottom: 8px; }
+.site-card p { color: var(--text2); font-size: 14px; line-height: 1.6; }
+.site-card .tag {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 12px; margin-top: 12px; color: #fff;
+}
+footer { text-align: center; padding: 32px 0; color: var(--text2); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>🛒 好物导航</h1>
+        <p>用心评测 · 诚实推荐 · 帮你找到最适合的好物</p>
+    </div>
+    <div class="sites">
+        <a href="/digital/" class="site-card">
+            <span class="icon">💻</span>
+            <h2>数码好物指南</h2>
+            <p>手机配件、电脑外设、智能穿戴、桌面好物、影音设备 — 数码产品的选购指南</p>
+            <span class="tag" style="background:#2563eb;">数码评测</span>
+        </a>
+        <a href="/home/" class="site-card">
+            <span class="icon">🏠</span>
+            <h2>居家好物志</h2>
+            <p>厨房神器、收纳整理、清洁好物、卧室用品、卫浴好物 — 让家更舒服的每一件</p>
+            <span class="tag" style="background:#059669;">家居精选</span>
+        </a>
+        <a href="/pet/" class="site-card">
+            <span class="icon">🐾</span>
+            <h2>宠物好物集</h2>
+            <p>狗狗用品、猫咪用品、小宠好物、宠物食品、出行装备 — 毛孩子值得最好的</p>
+            <span class="tag" style="background:#dc2626;">宠物推荐</span>
+        </a>
+    </div>
+    <footer>
+        <p>本站内容由AI辅助生成 · 产品价格以实际页面为准 · 可能包含推广链接</p>
+    </footer>
+</div>
+</body>
+</html>
