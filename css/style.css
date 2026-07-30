@@ -28,7 +28,8 @@ body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hel
 .article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:var(--shadow)}
 .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.card-img{height:160px;background:linear-gradient(135deg,#dbeafe,#d1fae5,#fef3c7);display:flex;align-items:center;justify-content:center;font-size:40px}
+.card-img{height:180px;background:linear-gradient(135deg,#dbeafe,#d1fae5,#fef3c7);display:flex;align-items:center;justify-content:center;font-size:40px}
+.card-cover{width:100%;height:180px;object-fit:cover;display:block}
 .card-body{padding:20px}
 .card .cat-tag{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:6px}
 .card h2{font-size:18px;font-weight:700;line-height:1.4;margin-bottom:8px}
