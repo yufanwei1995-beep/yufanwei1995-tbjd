@@ -95,6 +95,8 @@ article strong{color:var(--text)}
 .faq-section h2{margin-top:0}
 .faq-item{margin:16px 0;padding:16px 0;border-bottom:1px solid var(--border)}
 .faq-item:last-child{border-bottom:none}
+.coupon-section{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin:32px 0;text-align:center}
+.coupon-section h2{margin-top:0;margin-bottom:8px}
 .faq-item .q{font-weight:700;color:var(--accent);margin-bottom:6px}
 .faq-item .a{color:var(--muted)}
 
