@@ -6,20 +6,37 @@ body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hel
 .container-wide{max-width:var(--w-wide);margin:0 auto;padding:0 24px}
 
 /* Nav */
-.top-bar{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
-.top-bar .container-wide{display:flex;justify-content:space-between;align-items:center;height:60px}
-.logo{font-size:22px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.top-bar{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.top-bar .container-wide{display:flex;justify-content:space-between;align-items:center;height:56px;gap:12px}
+.logo{font-size:22px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px;white-space:nowrap}
 .logo span{color:var(--accent)}
-.nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links{display:flex;gap:14px;align-items:center;overflow-x:auto;flex-wrap:wrap;max-height:56px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:color .2s}
 .nav-links a:hover{color:var(--accent)}
 
-/* Hero */
-.hero{background:linear-gradient(135deg,#eff6ff,#f0fdf4,#fffbeb);border-bottom:1px solid var(--border);padding:60px 24px 48px;text-align:center}
-.hero h1{font-size:40px;font-weight:800;letter-spacing:-1px;margin-bottom:12px;line-height:1.2}
-.hero p{color:var(--muted);font-size:19px;max-width:560px;margin:0 auto 24px}
-.hero .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:50px;padding:8px 20px;font-size:14px;color:var(--muted);box-shadow:var(--shadow)}
-.hero .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+/* Search */
+.search-wrap{position:relative;max-width:400px;margin:0 auto 20px}
+.search-wrap input{width:100%;padding:12px 20px 12px 44px;border:2px solid var(--border);border-radius:50px;font-size:15px;outline:none;transition:border-color .2s;background:var(--bg)}
+.search-wrap input:focus{border-color:var(--accent)}
+.search-wrap .s-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--muted)}
+
+/* Hero Carousel */
+.carousel{position:relative;background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff;overflow:hidden;margin-bottom:32px}
+.carousel .slide{display:none;padding:40px 24px;text-align:center;animation:in .4s ease}
+.carousel .slide.active{display:block}
+.carousel .slide .ctag{display:inline-block;background:rgba(255,255,255,.15);padding:4px 14px;border-radius:20px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.carousel .slide h2{font-size:28px;font-weight:800;margin-bottom:8px;line-height:1.3;max-width:600px;margin-left:auto;margin-right:auto}
+.carousel .slide h2 a{color:#fff;text-decoration:none}
+.carousel .slide p{color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 16px;font-size:15px}
+.carousel .slide .c-btn{display:inline-block;background:var(--star);color:#000;padding:10px 28px;border-radius:50px;font-weight:700;text-decoration:none;font-size:14px;transition:opacity .2s}
+.carousel .slide .c-btn:hover{opacity:.85}
+.carousel .dots{display:flex;justify-content:center;gap:8px;padding:0 0 20px}
+.carousel .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .2s}
+.carousel .dots span.active{background:#fff}
+.carousel .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;transition:background .2s}
+.carousel .nav-arrow:hover{background:rgba(255,255,255,.2)}
+.carousel .nav-arrow.prev{left:16px}.carousel .nav-arrow.next{right:16px}
+@media(max-width:640px){.carousel .slide h2{font-size:20px}.carousel .nav-arrow{display:none}}
 
 /* Article Grid (homepage) */
 .articles-section{padding:48px 0}
