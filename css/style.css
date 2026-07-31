@@ -50,13 +50,12 @@ body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hel
 .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
 .card-img{height:180px;background:linear-gradient(135deg,#dbeafe,#d1fae5,#fef3c7);display:flex;align-items:center;justify-content:center;font-size:40px}
 .card-cover{width:100%;height:200px;object-fit:contain;display:block;background:#f8fafc;padding:8px}
-.card-body{padding:20px}
-.card .cat-tag{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:6px}
-.card h2{font-size:18px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.card-body{padding:14px 16px 16px}
+.card .cat-tag{display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:4px}
+.card h2{font-size:16px;font-weight:700;line-height:1.35;margin-bottom:4px}
 .card h2 a{color:var(--text);text-decoration:none}
 .card h2 a:hover{color:var(--accent)}
-.card .excerpt{color:var(--muted);font-size:14px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
-.card .meta{font-size:12px;color:var(--muted);display:flex;gap:12px}
+.card .excerpt{color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:0}
 
 /* Article Page */
 article{max-width:var(--w);margin:0 auto;padding:40px 24px 60px}
