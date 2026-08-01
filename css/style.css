@@ -5,21 +5,17 @@ body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hel
 .container{max-width:var(--w);margin:0 auto;padding:0 24px}
 .container-wide{max-width:var(--w-wide);margin:0 auto;padding:0 24px}
 
-/* Nav — two rows */
+/* Nav — centered two rows */
 .top-bar{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.top-row{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;max-width:var(--w-wide);margin:0 auto}
-.logo{font-size:22px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px;white-space:nowrap}
+.top-row{display:flex;justify-content:center;align-items:center;position:relative;padding:14px 24px;max-width:var(--w-wide);margin:0 auto}
+.logo{font-size:26px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px}
 .logo span{color:var(--accent)}
-.top-row .mini-search input{width:220px;padding:8px 14px;border:2px solid var(--border);border-radius:50px;font-size:13px;outline:none;transition:border-color .2s}
-.top-row .mini-search input:focus{border-color:var(--accent)}
-.cat-bar{background:#f8fafc;border-top:1px solid var(--border);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-.cat-bar .container-wide{display:flex;gap:0;padding:0 12px}
-.cat-bar a{display:inline-block;padding:12px 18px;color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all .2s}
-.cat-bar a:hover{color:var(--accent)}
-.cat-bar a.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
-.cat-bar::-webkit-scrollbar{height:3px}
-.cat-bar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-@media(max-width:640px){.top-row .mini-search{display:none}}
+.cat-bar{background:#f8fafc;border-top:1px solid var(--border);padding:6px 12px}
+.cat-row{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;max-width:var(--w-wide);margin:0 auto;padding:2px 0}
+.cat-row a{display:inline-block;padding:7px 16px;color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;border-radius:20px;transition:all .2s;background:transparent}
+.cat-row a:hover{color:var(--accent);background:#eff6ff}
+.cat-row a.active{color:#fff;background:var(--accent);font-weight:700}
+@media(max-width:640px){.cat-row a{font-size:12px;padding:6px 12px}}
 
 /* Search */
 .search-wrap{position:relative;max-width:400px;margin:0 auto 20px}
